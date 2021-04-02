@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище HorrorMapModelContainer" CdmEntityContainer="HorrorMapEntitiesSQL">
+    <EntitySetMapping Name="AgeLimit">
+      <EntityTypeMapping TypeName="HorrorMapModel.AgeLimit">
+        <MappingFragment StoreEntitySet="AgeLimit">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MPAA" ColumnName="MPAA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BudgetAndFees">
+      <EntityTypeMapping TypeName="HorrorMapModel.BudgetAndFees">
+        <MappingFragment StoreEntitySet="BudgetAndFees">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Budget" ColumnName="Budget" />
+          <ScalarProperty Name="WorldwideFees" ColumnName="WorldwideFees" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Creators">
+      <EntityTypeMapping TypeName="HorrorMapModel.Creators">
+        <MappingFragment StoreEntitySet="Creators">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Director" ColumnName="Director" />
+          <ScalarProperty Name="Producer" ColumnName="Producer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FilmDescription">
+      <EntityTypeMapping TypeName="HorrorMapModel.FilmDescription">
+        <MappingFragment StoreEntitySet="FilmDescription">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MainInfoFilm">
+      <EntityTypeMapping TypeName="HorrorMapModel.MainInfoFilm">
+        <MappingFragment StoreEntitySet="MainInfoFilm">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CountryCreator" ColumnName="CountryCreator" />
+          <ScalarProperty Name="ImageMovie" ColumnName="ImageMovie" />
+          <ScalarProperty Name="Operator" ColumnName="Operator" />
+          <ScalarProperty Name="Genres" ColumnName="Genres" />
+          <ScalarProperty Name="idCreators" ColumnName="idCreators" />
+          <ScalarProperty Name="idFilmDescription" ColumnName="idFilmDescription" />
+          <ScalarProperty Name="idBudgetAndFees" ColumnName="idBudgetAndFees" />
+          <ScalarProperty Name="idAgeLimit" ColumnName="idAgeLimit" />
+          <ScalarProperty Name="idRentalData" ColumnName="idRentalData" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RentalData">
+      <EntityTypeMapping TypeName="HorrorMapModel.RentalData">
+        <MappingFragment StoreEntitySet="RentalData">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PremiereInRussia" ColumnName="PremiereInRussia" />
+          <ScalarProperty Name="PremiereInWorld" ColumnName="PremiereInWorld" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище HorrorMapModel.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище HorrorMapModel.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище HorrorMapModel.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище HorrorMapModel.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HorrorMapModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище HorrorMapModel.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HorrorMapModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище HorrorMapModel.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище HorrorMapModel.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

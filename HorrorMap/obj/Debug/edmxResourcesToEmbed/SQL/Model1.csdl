@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HorrorMapModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AgeLimit">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MPAA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MainInfoFilm" Relationship="Self.idAgeLimit_MainInfoFilm_AgeLimit_ID" FromRole="AgeLimit" ToRole="MainInfoFilm" />
+  </EntityType>
+  <EntityType Name="BudgetAndFees">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Budget" Type="Int32" />
+    <Property Name="WorldwideFees" Type="Int32" />
+    <NavigationProperty Name="MainInfoFilm" Relationship="Self.idBudgetAndFees_MainInfoFilm_BudgetAndFees_ID" FromRole="BudgetAndFees" ToRole="MainInfoFilm" />
+  </EntityType>
+  <EntityType Name="Creators">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Director" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Producer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MainInfoFilm" Relationship="Self.idCreators_MainInfoFilm_Creators_ID" FromRole="Creators" ToRole="MainInfoFilm" />
+  </EntityType>
+  <EntityType Name="FilmDescription">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MainInfoFilm" Relationship="Self.idFilmDescriptios_MainInfoFilm_FilmDescription_ID" FromRole="FilmDescription" ToRole="MainInfoFilm" />
+  </EntityType>
+  <EntityType Name="MainInfoFilm">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountryCreator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ImageMovie" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Operator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Genres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="idCreators" Type="Int32" />
+    <Property Name="idFilmDescription" Type="Int32" />
+    <Property Name="idBudgetAndFees" Type="Int32" />
+    <Property Name="idAgeLimit" Type="Int32" />
+    <Property Name="idRentalData" Type="Int32" />
+    <NavigationProperty Name="AgeLimit" Relationship="Self.idAgeLimit_MainInfoFilm_AgeLimit_ID" FromRole="MainInfoFilm" ToRole="AgeLimit" />
+    <NavigationProperty Name="BudgetAndFees" Relationship="Self.idBudgetAndFees_MainInfoFilm_BudgetAndFees_ID" FromRole="MainInfoFilm" ToRole="BudgetAndFees" />
+    <NavigationProperty Name="Creators" Relationship="Self.idCreators_MainInfoFilm_Creators_ID" FromRole="MainInfoFilm" ToRole="Creators" />
+    <NavigationProperty Name="FilmDescription" Relationship="Self.idFilmDescriptios_MainInfoFilm_FilmDescription_ID" FromRole="MainInfoFilm" ToRole="FilmDescription" />
+    <NavigationProperty Name="RentalData" Relationship="Self.idRentalData_MainInfoFilm_RentalData_ID" FromRole="MainInfoFilm" ToRole="RentalData" />
+  </EntityType>
+  <EntityType Name="RentalData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PremiereInRussia" Type="DateTime" Precision="0" />
+    <Property Name="PremiereInWorld" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="MainInfoFilm" Relationship="Self.idRentalData_MainInfoFilm_RentalData_ID" FromRole="RentalData" ToRole="MainInfoFilm" />
+  </EntityType>
+  <Association Name="idAgeLimit_MainInfoFilm_AgeLimit_ID">
+    <End Role="AgeLimit" Type="Self.AgeLimit" Multiplicity="0..1" />
+    <End Role="MainInfoFilm" Type="Self.MainInfoFilm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AgeLimit">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MainInfoFilm">
+        <PropertyRef Name="idAgeLimit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="idBudgetAndFees_MainInfoFilm_BudgetAndFees_ID">
+    <End Role="BudgetAndFees" Type="Self.BudgetAndFees" Multiplicity="0..1" />
+    <End Role="MainInfoFilm" Type="Self.MainInfoFilm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BudgetAndFees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MainInfoFilm">
+        <PropertyRef Name="idBudgetAndFees" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="idCreators_MainInfoFilm_Creators_ID">
+    <End Role="Creators" Type="Self.Creators" Multiplicity="0..1" />
+    <End Role="MainInfoFilm" Type="Self.MainInfoFilm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Creators">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MainInfoFilm">
+        <PropertyRef Name="idCreators" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="idFilmDescriptios_MainInfoFilm_FilmDescription_ID">
+    <End Role="FilmDescription" Type="Self.FilmDescription" Multiplicity="0..1" />
+    <End Role="MainInfoFilm" Type="Self.MainInfoFilm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FilmDescription">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MainInfoFilm">
+        <PropertyRef Name="idFilmDescription" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="idRentalData_MainInfoFilm_RentalData_ID">
+    <End Role="RentalData" Type="Self.RentalData" Multiplicity="0..1" />
+    <End Role="MainInfoFilm" Type="Self.MainInfoFilm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RentalData">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MainInfoFilm">
+        <PropertyRef Name="idRentalData" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HorrorMapEntitiesSQL" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AgeLimit" EntityType="Self.AgeLimit" />
+    <EntitySet Name="BudgetAndFees" EntityType="Self.BudgetAndFees" />
+    <EntitySet Name="Creators" EntityType="Self.Creators" />
+    <EntitySet Name="FilmDescription" EntityType="Self.FilmDescription" />
+    <EntitySet Name="MainInfoFilm" EntityType="Self.MainInfoFilm" />
+    <EntitySet Name="RentalData" EntityType="Self.RentalData" />
+    <AssociationSet Name="idAgeLimit_MainInfoFilm_AgeLimit_ID" Association="Self.idAgeLimit_MainInfoFilm_AgeLimit_ID">
+      <End Role="AgeLimit" EntitySet="AgeLimit" />
+      <End Role="MainInfoFilm" EntitySet="MainInfoFilm" />
+    </AssociationSet>
+    <AssociationSet Name="idBudgetAndFees_MainInfoFilm_BudgetAndFees_ID" Association="Self.idBudgetAndFees_MainInfoFilm_BudgetAndFees_ID">
+      <End Role="BudgetAndFees" EntitySet="BudgetAndFees" />
+      <End Role="MainInfoFilm" EntitySet="MainInfoFilm" />
+    </AssociationSet>
+    <AssociationSet Name="idCreators_MainInfoFilm_Creators_ID" Association="Self.idCreators_MainInfoFilm_Creators_ID">
+      <End Role="Creators" EntitySet="Creators" />
+      <End Role="MainInfoFilm" EntitySet="MainInfoFilm" />
+    </AssociationSet>
+    <AssociationSet Name="idFilmDescriptios_MainInfoFilm_FilmDescription_ID" Association="Self.idFilmDescriptios_MainInfoFilm_FilmDescription_ID">
+      <End Role="FilmDescription" EntitySet="FilmDescription" />
+      <End Role="MainInfoFilm" EntitySet="MainInfoFilm" />
+    </AssociationSet>
+    <AssociationSet Name="idRentalData_MainInfoFilm_RentalData_ID" Association="Self.idRentalData_MainInfoFilm_RentalData_ID">
+      <End Role="RentalData" EntitySet="RentalData" />
+      <End Role="MainInfoFilm" EntitySet="MainInfoFilm" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(HorrorMapModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(HorrorMapModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

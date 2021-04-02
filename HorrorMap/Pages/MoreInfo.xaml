@@ -1,0 +1,119 @@
+﻿<Page x:Class="HorrorMap.Pages.MoreInfo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HorrorMap.Pages"
+      mc:Ignorable="d" Loaded="Page_Loaded"
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="MoreInfo">
+
+
+
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="Green"/>
+            <Setter Property="FontFamily" Value="Century Schoolbook"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Width" Value="700"/>
+            <Setter Property="BorderBrush" Value="Green"/>
+            <Setter Property="BorderThickness" Value="0px 0.7px 0px 0.7px"/>
+            <Setter Property="Margin" Value="0 5 0 5"/>
+
+        </Style>
+     
+        
+    </Page.Resources>
+
+    <Grid>
+        <Image Source="/Background/horror.jpg"/>
+        <Grid>
+
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="650"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="2">
+                
+            </StackPanel>
+            
+
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Button Content="Назад" Click="Button_Click"/>
+            </StackPanel>
+            
+            
+            
+            
+
+            <ListView Grid.Row="1" x:Name="ListMoreInfo" BorderBrush="{x:Null}" Height="980" VerticalAlignment="Top"
+                      BorderThickness="0">
+                <ListView.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0.16">
+                        <GradientStop Color="#FF003C13" Offset="0"/>
+                        <GradientStop Color="#FF003C13" Offset="1"/>
+                    </LinearGradientBrush>
+                </ListView.Background>
+                <ListView.ItemTemplate>
+                    
+                    <DataTemplate>
+                        
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0" Margin="0 10 0 0">
+                                <Border Width="320" Height="420" Opacity="0.2"/>
+                                <Image Source="{Binding ImageMovie}" Width="400" Height="550" Opacity="0.9">
+                                    <Image.Effect>
+                                        <BlurEffect/>
+                                    </Image.Effect>
+                                </Image>
+                                <Image Source="{Binding ImageMovie}" Width="400" Height="500"/>
+                                
+                            </Grid>
+
+                          
+                                
+                            <Grid Grid.Column="1">
+                                <StackPanel Margin="100 30 0 0">
+                                    
+                                    
+                                    <Label Content="{Binding Name}" FontSize="30" FontWeight="UltraBlack"/>
+                                    <Label Content="{Binding CountryCreator}" ContentStringFormat="Страна создатель: {0}"/>
+                                    <Label Content="{Binding Genres}" ContentStringFormat="Жанры: {0}"/>
+                                    <Label Content="{Binding RentalData.PremiereInRussia}" ContentStringFormat="Дата выхода в России: {0:dd/MM/yyy}"/>
+                                    <Label Content="{Binding RentalData.PremiereInWorld}" ContentStringFormat="Дата выхода в мире: {0:dd/MM/yyy}" />
+                                    <Label Content="{Binding Operator}" ContentStringFormat="Оператор: {0}"/>
+                                    <Label Content="{Binding Creators.Producer}" ContentStringFormat="Продюссер: {0}"/>
+                                    <Label Content="{Binding Creators.Director}" ContentStringFormat="Режиссер: {0}"/>
+                                    <Label Content="{Binding BudgetAndFees.WorldwideFees}" ContentStringFormat="Сборы в мире: {0} $" />
+                                    <Label Content="{Binding BudgetAndFees.Budget}" ContentStringFormat="Бюджет: {0} $" />
+                                    <Label Content="{Binding AgeLimit.MPAA}" ContentStringFormat="Возрастное ограничение: {0}"/>
+                                    <TextBlock Text="{Binding FilmDescription.Description}" TextWrapping="Wrap" Width="690" Height="150" FontSize="16" Background="Transparent" Foreground="Green" FontFamily="Century Schoolbook"/>
+                                </StackPanel>
+                            </Grid>
+                            
+                            
+                            
+                            
+
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </Grid>
+        
+
+
+ 
+
+    </Grid>
+</Page>

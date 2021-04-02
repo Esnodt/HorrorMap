@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5e712723e4de48ef81141422e1d4eb23" Name="Diagram1">
+        <EntityTypeShape EntityType="HorrorMapModel.AgeLimit" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HorrorMapModel.BudgetAndFees" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HorrorMapModel.Creators" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HorrorMapModel.FilmDescription" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HorrorMapModel.MainInfoFilm" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HorrorMapModel.RentalData" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <AssociationConnector Association="HorrorMapModel.idAgeLimit_MainInfoFilm_AgeLimit_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="HorrorMapModel.idBudgetAndFees_MainInfoFilm_BudgetAndFees_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="HorrorMapModel.idCreators_MainInfoFilm_Creators_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="HorrorMapModel.idFilmDescriptios_MainInfoFilm_FilmDescription_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="HorrorMapModel.idRentalData_MainInfoFilm_RentalData_ID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
